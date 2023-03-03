@@ -235,6 +235,16 @@ form label input {
   color: #0d5c34;
 }
 
+footer {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.empty {
+  height: 50vh;
+}
+
 /* Spinner */
 .loadingSpinnerContainer {
   position: fixed;

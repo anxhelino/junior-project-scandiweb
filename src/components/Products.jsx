@@ -33,12 +33,26 @@ const Products = () => {
     return <Spinner />;
   }
 
+  // if (products.length === 0) {
+  //   return (
+  //     <div className="empty">
+  //       <h1>There are no products to display. Click Add to add one</h1>
+  //     </div>
+  //   );
+  // }
+
   return (
     <main>
       <div className="cardsContainer">
-        {products.map((prod) => {
-          return <Product key={+prod.id} {...prod} />;
-        })}
+        {products.length === 0 ? (
+          <div className="empty">
+            <h3>There are no products to display. Click Add to add one</h3>
+          </div>
+        ) : (
+          products.map((prod) => {
+            return <Product key={+prod.id} {...prod} />;
+          })
+        )}
       </div>
     </main>
   );
