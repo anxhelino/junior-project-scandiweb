@@ -10,7 +10,7 @@ const Header = () => {
         <h1>Product</h1>
       </div>
       <div className="buttons">
-        <Link to="/addProduct">ADD</Link>
+        <Link to="/add-product">ADD</Link>
         <button id="delete-product-btn" onClick={handleDeleteProducts}>
           MASS DELETE
         </button>
