@@ -31,9 +31,9 @@ const Products = () => {
     getProducts();
   }, []);
 
-  if (loading) {
-    return <Spinner />;
-  }
+  // if (loading) {
+  //   return <Spinner />;
+  // }
 
   // if (products.length === 0) {
   //   return (
