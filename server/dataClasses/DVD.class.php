@@ -7,7 +7,7 @@ class DVD extends MySqlProducts {
         $this->setName($this->data->name);   
         $this->setProductType($this->data->option);
         $this->setPrice($this->data->price);
-        $this->setSpecs('Size' . $this->data->size . 'MB');
+        $this->setSpecs('Size:' . $this->data->size . 'MB');
         
         $smt = $this->db->prepare('INSERT INTO products (sku, name,productType,price,specs) VALUES (:sku, :name,:productType, :price,:specs)');
          try{

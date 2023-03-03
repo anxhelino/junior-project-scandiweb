@@ -7,7 +7,7 @@ class Book extends MySqlProducts{
         $this->setName($this->data->name);   
         $this->setProductType($this->data->option);
         $this->setPrice($this->data->price);
-        $this->setSpecs('Weight' . $this->data->weight . 'KG');
+        $this->setSpecs('Weight: ' . $this->data->weight . 'KG');
         
         $smt = $this->db->prepare('INSERT INTO products (sku, name,productType,price,specs) VALUES (:sku, :name,:productType, :price,:specs)');
          try{
