@@ -10,7 +10,7 @@ function App() {
         <ProductContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/addProduct" element={<AddProducts />} />
+            <Route path="/add-product" element={<AddProducts />} />
           </Routes>
         </ProductContextProvider>
       </Router>
