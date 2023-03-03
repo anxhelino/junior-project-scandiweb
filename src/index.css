@@ -22,6 +22,7 @@ header {
   display: flex;
   justify-content: space-between;
   width: 90%;
+  max-width: 1300px;
   align-items: center;
   margin: auto;
   margin-top: 3%;
@@ -67,6 +68,7 @@ h1 {
 
 main {
   width: 90%;
+  max-width: 1300px;
   display: grid;
 
   margin: auto;
@@ -79,6 +81,7 @@ main {
 
   margin-top: 2rem;
   justify-items: center;
+  justify-content: center;
   margin-bottom: 2rem;
   padding-bottom: 4rem;
   border-bottom: 2px solid black;
