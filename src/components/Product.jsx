@@ -22,7 +22,6 @@ const Product = ({ sku, name, price, specs, id }) => {
   };
 
   useEffect(() => {
-    console.log(deleteProduct);
     if (typeof deleteProduct === "number") {
       remove((prev) => [...prev, +deleteProduct]);
     }

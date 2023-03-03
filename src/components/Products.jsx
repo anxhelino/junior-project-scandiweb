@@ -8,7 +8,9 @@ const Products = () => {
   const { products, setProducts } = useContext(ProductContext);
   const getProducts = async () => {
     setLoading(true);
-    const res = await axios(`http://localhost:8888/server/get.php`);
+    const res = await axios(
+      `https://junior-test-anxhelino-ismailanji.000webhostapp.com/get.php`
+    );
     const data = res.data;
 
     const prod = data.map((product) => {

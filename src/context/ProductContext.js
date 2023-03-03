@@ -76,7 +76,10 @@ export const ProductContextProvider = ({ children }) => {
     //send post request
 
     axios
-      .post(`http://localhost:8888/server/post.php`, JSON.stringify(input))
+      .post(
+        `https://junior-test-anxhelino-ismailanji.000webhostapp.com/post.php`,
+        JSON.stringify(input)
+      )
       .then((res) => {
         console.log(res.data);
       });
@@ -95,7 +98,10 @@ export const ProductContextProvider = ({ children }) => {
   //Delete products
   const handleDeleteProducts = () => {
     axios
-      .post(`http://localhost:8888/server/delete.php`, JSON.stringify(toDelete))
+      .post(
+        `https://junior-test-anxhelino-ismailanji.000webhostapp.com/delete.php`,
+        JSON.stringify(toDelete)
+      )
       .then((res) => {
         console.log(res.data);
       });
