@@ -44,10 +44,27 @@ export const ProductContextProvider = ({ children }) => {
     setInput((input) => ({ ...input, option, ...selectProduct[option] }));
   }, [option]);
 
-  //getProducts
+  //check for invalid input
+  const checkInput = () => {
+    let error = false;
+    for (const [key, value] of Object.entries(input)) {
+      if (
+        (key === "price" && !+value) ||
+        (key === "weight" && !+value) ||
+        (key === "size" && !+value) ||
+        (key === "height" && !+value) ||
+        (key === "width" && !+value) ||
+        (key === "length" && !+value) ||
+        +value < 1
+      )
+        error = true;
+    }
+    return error;
+  };
 
   // set products
   const handleSubmit = async () => {
+    setEmptyError();
     //check if input is empty
     const isEmptyInput = Object.values(input).some(
       (input) => input === "" || input === " "
@@ -70,6 +87,13 @@ export const ProductContextProvider = ({ children }) => {
     // Check if sku is already registered
     if (products.some((prod) => prod.sku === input.sku)) {
       setEmptyError("This id already taken please type another");
+      return;
+    }
+
+    //Check for invalid inputs
+    console.log(checkInput());
+    if (checkInput()) {
+      setEmptyError("Please, provide the data of indicated type");
       return;
     }
 
