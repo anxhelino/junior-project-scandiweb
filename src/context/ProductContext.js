@@ -141,6 +141,8 @@ export const ProductContextProvider = ({ children }) => {
         remove: setToDelete,
         handleSubmit: handleSubmit,
         addProduct: setInput,
+        setEmptyError: setEmptyError,
+        setError: setError,
         setOption: setOption,
         setProducts: setProducts,
         handleDeleteProducts: handleDeleteProducts,

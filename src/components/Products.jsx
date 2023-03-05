@@ -5,7 +5,8 @@ import ProductContext from "../context/ProductContext";
 import Spinner from "./Spinner";
 const Products = () => {
   const [loading, setLoading] = useState(false);
-  const { products, setProducts } = useContext(ProductContext);
+  const { products, setProducts, setOption, setError, setEmptyError } =
+    useContext(ProductContext);
   const getProducts = async () => {
     setLoading(true);
     const res = await axios(
@@ -28,6 +29,9 @@ const Products = () => {
   };
 
   useEffect(() => {
+    setError();
+    setOption();
+    setEmptyError();
     getProducts();
   }, []);
 

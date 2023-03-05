@@ -3,8 +3,7 @@ import { useContext } from "react";
 import ProductContext from "../context/ProductContext";
 
 const ProductHeader = () => {
-  const { handleSubmit, setOption, setError, setEmptyError } =
-    useContext(ProductContext);
+  const { handleSubmit } = useContext(ProductContext);
 
   return (
     <header>
@@ -15,15 +14,7 @@ const ProductHeader = () => {
         <button id="save" onClick={handleSubmit}>
           SAVE
         </button>
-        <Link
-          to="/"
-          id="delete-product-btn"
-          onClick={() => {
-            setError();
-            setOption();
-            setEmptyError();
-          }}
-        >
+        <Link to="/" id="delete-product-btn">
           Cancel
         </Link>
       </div>
