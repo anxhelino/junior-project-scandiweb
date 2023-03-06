@@ -98,6 +98,10 @@ export const ProductContextProvider = ({ children }) => {
     }
 
     //send post request
+    setProducts((prev) => {
+      console.log(prev);
+      return [{ ...prev, ...input }];
+    });
 
     axios
       .post(
@@ -108,17 +112,18 @@ export const ProductContextProvider = ({ children }) => {
         console.log(res.data);
       });
     // set products on UI
-    setProducts((prev) => [{ ...prev, input }]);
 
     // reset all input and errors
-    navigate("/");
-    setInput({
-      sku: "",
-      name: "",
-      price: "",
-    });
-    setOption();
-    setEmptyError();
+    setTimeout(() => {
+      navigate("/");
+      setInput({
+        sku: "",
+        name: "",
+        price: "",
+      });
+      setOption();
+      setEmptyError();
+    }, 200);
   };
 
   //Delete products
