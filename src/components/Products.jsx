@@ -4,9 +4,10 @@ import Product from "./Product";
 import ProductContext from "../context/ProductContext";
 import Spinner from "./Spinner";
 const Products = () => {
-  const [loading, setLoading] = useState(false);
   const { products, setProducts, setOption, setError, setEmptyError } =
     useContext(ProductContext);
+  const [loading, setLoading] = useState(false);
+
   const getProducts = async () => {
     setLoading(true);
     const res = await axios(
@@ -29,25 +30,15 @@ const Products = () => {
   };
 
   useEffect(() => {
+    getProducts();
     setError();
     setOption();
     setEmptyError();
-    getProducts();
   }, []);
 
-  // if (loading) {
-  //   return <Spinner />;
-  // }
-
-  // if (products.length === 0) {
-  //   return (
-  //     <div className="empty">
-  //       <h1>There are no products to display. Click Add to add one</h1>
-  //     </div>
-  //   );
-  // }
-
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <main>
       <div className="cardsContainer">
         {products.length === 0 ? (
