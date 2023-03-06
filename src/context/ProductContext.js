@@ -107,6 +107,10 @@ export const ProductContextProvider = ({ children }) => {
       .then((res) => {
         console.log(res.data);
       });
+    // set products on UI
+    setProducts((prev) => {
+      return [{ ...prev, input }];
+    });
 
     // reset all input and errors
     navigate("/");
