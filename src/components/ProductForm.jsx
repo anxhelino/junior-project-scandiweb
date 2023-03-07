@@ -143,22 +143,6 @@ const ProductForm = () => {
         </div>
         {error ? <p className="error">*{error}</p> : ""}
         <div className="dropdown">
-          <label htmlFor="productType">Choose a car:</label>
-
-          <select
-            id="productType"
-            onChange={(e) => {
-              setOption(e.target.value);
-            }}
-          >
-            <option>Product Switcher</option>
-            <option value="DVD">DVD</option>
-            <option value="Book">Book</option>
-            <option value="Furniture">Furniture</option>
-          </select>
-        </div>
-
-        {/* <div className="dropdown">
           <span>Product Type Switcher</span>
           <button className="dropbtn" onClick={toggleDropBox}>
             {option || "Dropdown"}{" "}
@@ -166,7 +150,10 @@ const ProductForm = () => {
               <AiOutlineArrowDown />
             </i>
           </button>
-          <div id="productType" className={`dropdown-content show`}>
+          <div
+            id="productType"
+            className={`dropdown-content ${showDropbox && "show"}`}
+          >
             <p
               onClick={() => {
                 setOption("DVD");
@@ -195,7 +182,7 @@ const ProductForm = () => {
               Furniture
             </p>
           </div>
-        </div> */}
+        </div>
         <div>
           <ProductDescription
             option={option}
