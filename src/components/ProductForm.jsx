@@ -159,6 +159,7 @@ const ProductForm = () => {
                 setOption("DVD");
                 setShowDropbox(false);
               }}
+              id="DVD"
             >
               DVD
             </p>
@@ -167,6 +168,7 @@ const ProductForm = () => {
                 setOption("Book");
                 setShowDropbox(false);
               }}
+              id="Book"
             >
               Book
             </p>
@@ -175,6 +177,7 @@ const ProductForm = () => {
                 setOption("Furniture");
                 setShowDropbox(false);
               }}
+              id="Furniture"
             >
               Furniture
             </p>
