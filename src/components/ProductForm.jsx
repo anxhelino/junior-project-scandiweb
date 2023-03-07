@@ -150,10 +150,7 @@ const ProductForm = () => {
               <AiOutlineArrowDown />
             </i>
           </button>
-          <div
-            id="myDropdown productType"
-            className={`dropdown-content ${showDropbox && "show"}`}
-          >
+          <div id="productType" className={`dropdown-content show`}>
             <p
               onClick={() => {
                 setOption("DVD");
