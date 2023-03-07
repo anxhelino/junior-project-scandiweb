@@ -144,7 +144,7 @@ const ProductForm = () => {
         {error ? <p className="error">*{error}</p> : ""}
         <div className="dropdown">
           <span>Product Type Switcher</span>
-          <button className="dropbtn" onClick={toggleDropBox}>
+          <button className="dropbtn" onClick={toggleDropBox} id="productType">
             {option || "Dropdown"}{" "}
             <i>
               <AiOutlineArrowDown />
