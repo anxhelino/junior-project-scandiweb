@@ -105,7 +105,7 @@ const ProductForm = () => {
   return (
     <div className="formContainer">
       {emptyError ? <p className="error">*{emptyError}</p> : ""}
-      <form action="post" id="product-form">
+      <form action="post" id="product_form">
         <div className="regularForm">
           <label htmlFor="sku">
             SKU
