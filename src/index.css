@@ -237,6 +237,25 @@ form label input {
   margin-top: 2rem;
 }
 
+#productType {
+  padding: 0.4rem;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px #808080;
+  outline: none;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+
+  cursor: pointer;
+}
+
+.dropdown {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .error {
   color: #0d5c34;
 }
