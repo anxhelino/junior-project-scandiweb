@@ -63,7 +63,8 @@ export const ProductContextProvider = ({ children }) => {
   };
 
   // set products
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setEmptyError();
     //check if input is empty
     const isEmptyInput = Object.values(input).some(
