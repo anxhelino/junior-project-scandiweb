@@ -215,7 +215,7 @@ const ProductForm = () => {
           />
         </div>
         <button id="save" onClick={handleSubmit}>
-          SAVE
+          Save
         </button>
       </form>
     </div>
