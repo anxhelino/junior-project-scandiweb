@@ -214,7 +214,7 @@ const ProductForm = () => {
             handleChange={handleChange}
           />
         </div>
-        <button id="save" onClick={handleSubmit}>
+        <button id="Save" onClick={handleSubmit}>
           Save
         </button>
       </form>
