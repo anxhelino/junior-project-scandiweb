@@ -11,10 +11,7 @@ const ProductHeader = () => {
         <h1>Product Add</h1>
       </div>
       <div className="buttons">
-        <button id="save" onClick={handleSubmit}>
-          SAVE
-        </button>
-        <Link to="/" id="delete-product-btn">
+        <Link to="/" id="cancel">
           Cancel
         </Link>
       </div>

@@ -84,8 +84,15 @@ const ProductDescription = ({ option, handleChange, input }) => {
 
 const ProductForm = () => {
   const [showDropbox, setShowDropbox] = useState(false);
-  const { addProduct, input, setOption, option, error, emptyError } =
-    useContext(ProductContext);
+  const {
+    addProduct,
+    input,
+    setOption,
+    option,
+    error,
+    emptyError,
+    handleSubmit,
+  } = useContext(ProductContext);
 
   const toggleDropBox = (e) => {
     e.preventDefault();
@@ -207,6 +214,9 @@ const ProductForm = () => {
             handleChange={handleChange}
           />
         </div>
+        <button id="save" onClick={handleSubmit}>
+          SAVE
+        </button>
       </form>
     </div>
   );

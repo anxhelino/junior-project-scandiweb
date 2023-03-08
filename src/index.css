@@ -42,10 +42,6 @@ h1 {
   margin-left: 2rem;
 }
 
-#save {
-  margin-right: 2rem;
-}
-
 .buttons * {
   padding: 0.5rem;
   background-color: white;
@@ -62,6 +58,21 @@ h1 {
 #save {
   background-color: #696969;
   color: white;
+  margin-right: 2rem;
+  position: absolute;
+  top: -81px;
+  right: 80px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px #808080;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+#cancel {
+  float: right;
 }
 
 /* Main Cards */
@@ -132,6 +143,7 @@ main {
   max-width: 1300px;
   margin: auto;
   margin-top: 2rem;
+  position: relative;
 }
 
 form {
