@@ -1,89 +1,7 @@
-import { AiOutlineArrowDown } from "react-icons/ai";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import ProductContext from "../context/ProductContext";
 
-const ProductDescription = ({ option, handleChange, input }) => {
-  if (option === "DVD") {
-    return (
-      <div id={option} className="productDescription">
-        <label htmlFor="size">
-          Size (MB)
-          <input
-            value={input.size}
-            onChange={handleChange}
-            type="number"
-            required
-            id="size"
-            placeholder="DVD size MB"
-          />
-        </label>
-        <p>Please provide the size in MB of the DVD</p>
-      </div>
-    );
-  }
-  if (option === "Book") {
-    return (
-      <div id={option} className="productDescription">
-        <label htmlFor="weight">
-          Weight (KG)
-          <input
-            value={input.weight}
-            onChange={handleChange}
-            required
-            type="number"
-            id="weight"
-            placeholder="Book Weight in KG"
-          />
-        </label>
-        <p>Please provide the weight of the book</p>
-      </div>
-    );
-  }
-
-  if (option === "Furniture") {
-    return (
-      <div id={option} className="productDescription">
-        <label htmlFor="height">
-          Height (CM)
-          <input
-            value={input.height}
-            onChange={handleChange}
-            required
-            type="number"
-            id="height"
-            placeholder="Furniture Height CM"
-          />
-        </label>
-        <label htmlFor="width">
-          Width (CM)
-          <input
-            value={input.width}
-            onChange={handleChange}
-            required
-            type="number"
-            id="width"
-            placeholder="Furniture Width CM"
-          />
-        </label>
-        <label htmlFor="length">
-          Length (CM)
-          <input
-            value={input.length}
-            onChange={handleChange}
-            required
-            type="number"
-            id="length"
-            placeholder="Furniture Length CM"
-          />
-        </label>
-        <p>Please provide dimensions in HxWxL format</p>
-      </div>
-    );
-  }
-};
-
 const ProductForm = () => {
-  const [showDropbox, setShowDropbox] = useState(false);
   const {
     addProduct,
     input,
@@ -94,10 +12,13 @@ const ProductForm = () => {
     handleSubmit,
   } = useContext(ProductContext);
 
-  const toggleDropBox = (e) => {
-    e.preventDefault();
-    setShowDropbox(!showDropbox);
+  const Component = {
+    Book,
+    Furniture,
+    DVD,
   };
+
+  const ActiveOption = Component[option];
 
   // handle input change
   const handleChange = (e) => {
@@ -150,7 +71,7 @@ const ProductForm = () => {
         </div>
         {error ? <p className="error">*{error}</p> : ""}
         <div className="dropdown">
-          <label for="productType">Product Type Switcher:</label>
+          <label htmlFor="productType">Product Type Switcher:</label>
 
           <select
             id="productType"
@@ -168,56 +89,98 @@ const ProductForm = () => {
             <option value="Furniture">Furniture</option>
           </select>
         </div>
-
-        {/* <div className="dropdown">
-          <span>Product Type Switcher</span>
-          <button className="dropbtn" onClick={toggleDropBox}>
-            {option || "Dropdown"}{" "}
-            <i>
-              <AiOutlineArrowDown />
-            </i>
-          </button>
-          <div id="productType" className={`dropdown-content show`}>
-            <p
-              onClick={() => {
-                setOption("DVD");
-                setShowDropbox(false);
-              }}
-              id="DVD"
-            >
-              DVD
-            </p>
-            <p
-              onClick={() => {
-                setOption("Book");
-                setShowDropbox(false);
-              }}
-              id="Book"
-            >
-              Book
-            </p>
-            <p
-              onClick={() => {
-                setOption("Furniture");
-                setShowDropbox(false);
-              }}
-              id="Furniture"
-            >
-              Furniture
-            </p>
-          </div>
-        </div> */}
         <div>
-          <ProductDescription
-            option={option}
-            input={input}
-            handleChange={handleChange}
-          />
+          {option && (
+            <ActiveOption
+              option={option}
+              input={input}
+              handleChange={handleChange}
+            />
+          )}
         </div>
         <button id="Save" onClick={handleSubmit}>
           Save
         </button>
       </form>
+    </div>
+  );
+};
+
+const DVD = ({ option, handleChange, input }) => {
+  return (
+    <div id={option} className="productDescription">
+      <label htmlFor="size">
+        Size (MB)
+        <input
+          value={input.size}
+          onChange={handleChange}
+          type="number"
+          required
+          id="size"
+          placeholder="DVD size MB"
+        />
+      </label>
+      <p>Please provide the size in MB of the DVD</p>
+    </div>
+  );
+};
+
+const Book = ({ option, handleChange, input }) => {
+  return (
+    <div id={option} className="productDescription">
+      <label htmlFor="weight">
+        Weight (KG)
+        <input
+          value={input.weight}
+          onChange={handleChange}
+          required
+          type="number"
+          id="weight"
+          placeholder="Book Weight in KG"
+        />
+      </label>
+      <p>Please provide the weight of the book</p>
+    </div>
+  );
+};
+
+const Furniture = ({ option, handleChange, input }) => {
+  return (
+    <div id={option} className="productDescription">
+      <label htmlFor="height">
+        Height (CM)
+        <input
+          value={input.height}
+          onChange={handleChange}
+          required
+          type="number"
+          id="height"
+          placeholder="Furniture Height CM"
+        />
+      </label>
+      <label htmlFor="width">
+        Width (CM)
+        <input
+          value={input.width}
+          onChange={handleChange}
+          required
+          type="number"
+          id="width"
+          placeholder="Furniture Width CM"
+        />
+      </label>
+      <label htmlFor="length">
+        Length (CM)
+        <input
+          value={input.length}
+          onChange={handleChange}
+          required
+          type="number"
+          id="length"
+          placeholder="Furniture Length CM"
+        />
+      </label>
+      <p>Please provide dimensions in HxWxL format</p>
     </div>
   );
 };

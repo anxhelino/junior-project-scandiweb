@@ -12,13 +12,13 @@ class MySqlProducts extends Product {
 
  public function delete($id) {
   $ids = array($id)[0];
-  
-    foreach($ids as $id){
-      echo($id);
-        $sql = "DELETE FROM products WHERE id = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([$id]);
-        }
+
+$placeholders = rtrim(str_repeat('?,', count($ids)), ',');
+
+$sql = "DELETE FROM products WHERE id IN ($placeholders)";
+$stmt = $this->db->prepare($sql);
+
+$stmt->execute($ids);
  }
     
 }

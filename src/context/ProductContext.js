@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ProductContext = createContext();
+
 const selectProduct = {
   Book: {
     weight: "",
@@ -18,8 +19,6 @@ const selectProduct = {
 };
 
 export const ProductContextProvider = ({ children }) => {
-  // products do delete
-  const [toDelete, setToDelete] = useState([]);
   // set product type
   const [option, setOption] = useState();
   const [error, setError] = useState();
@@ -90,29 +89,17 @@ export const ProductContextProvider = ({ children }) => {
       setEmptyError("This id already taken please type another");
       return;
     }
-
     //Check for invalid inputs
-    console.log(checkInput());
     if (checkInput()) {
       setEmptyError("Please, provide the data of indicated type");
       return;
     }
 
     //send post request
-    setProducts((prev) => {
-      console.log(prev);
-      return [{ ...prev, ...input }];
-    });
-
-    axios
-      .post(
-        `https://junior-test-anxhelino-ismailanji.000webhostapp.com/post.php`,
-        JSON.stringify(input)
-      )
-      .then((res) => {
-        console.log(res.data);
-      });
-    // set products on UI
+    axios.post(
+      `https://junior-test-anxhelino-ismailanji.000webhostapp.com/post.php`,
+      JSON.stringify(input)
+    );
 
     // reset all input and errors
     setTimeout(() => {
@@ -128,7 +115,12 @@ export const ProductContextProvider = ({ children }) => {
   };
 
   //Delete products
-  const handleDeleteProducts = () => {
+  const handleDeleteProducts = (toDelete) => {
+    if (toDelete.length === 0) {
+      return;
+    }
+
+    //Delete products from server
     axios
       .post(
         `https://junior-test-anxhelino-ismailanji.000webhostapp.com/delete.php`,
@@ -138,6 +130,7 @@ export const ProductContextProvider = ({ children }) => {
         console.log(res.data);
       });
 
+    //Delete products from ui
     setProducts((prev) => {
       return prev.filter((prod) => !toDelete.includes(+prod.id));
     });
@@ -146,7 +139,6 @@ export const ProductContextProvider = ({ children }) => {
   return (
     <ProductContext.Provider
       value={{
-        remove: setToDelete,
         handleSubmit: handleSubmit,
         addProduct: setInput,
         setEmptyError: setEmptyError,
